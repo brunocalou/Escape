@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InventoryItem : MonoBehaviour {
+public class InventoryItem : MonoBehaviour, UnityEngine.EventSystems.IPointerClickHandler
+{
 
-	// Use this for initialization
-	void Start () {
+    Inventory inventory;
+    // Use this for initialization
+    void Start () {
         hide();
-	}
+        inventory = GameObject.FindWithTag("Inventory").GetComponent<Inventory>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,5 +24,10 @@ public class InventoryItem : MonoBehaviour {
     public void hide()
     {
         this.gameObject.SetActive(false);
+    }
+
+    public void OnPointerClick(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        inventory.handleSelect(this);
     }
 }
