@@ -15,31 +15,18 @@ public class Inventory : MonoBehaviour {
 	
 	}
 
-    public void addItem(CollactableItem item)
+    public void addItem(InventoryItem item)
     {
         Debug.Log("Added item");
         items.Add(item);
 
-        //Place item on the inventory
-        GameObject new_item = Instantiate(item.gameObject);
-        UnityEngine.Canvas canvas = FindObjectOfType<Canvas>();
-        Destroy(new_item.GetComponent<CollactableItem>());
+        RectTransform rect_transform = item.GetComponent<RectTransform>();
+        Vector2 pivot = rect_transform.pivot;//.y = this.GetComponent<RectTransform>().rect.height / 2;
 
-        new_item.transform.SetParent(canvas.transform, false);
-        new_item.transform.SetAsFirstSibling();
+        rect_transform.pivot = new Vector2(pivot.x, 1 - items.IndexOf(item) / (float)(MAX_NUMBER_OF_ITEMS - 1));
 
-        Destroy(new_item.GetComponent<Transform>());
-
-        new_item.AddComponent<RectTransform>();
-        RectTransform inventory_rect_transform = this.GetComponent<RectTransform>();
-        RectTransform new_item_rect_transform = new_item.GetComponent<RectTransform>();
-        //new_item.transform.localPosition = new Vector3(this.transform.position.x, this.transform.position.y, -10);
-        new_item_rect_transform.anchoredPosition = new Vector2(1, 1);
-        new_item_rect_transform.anchorMin = new Vector2(1, 1);
-        new_item_rect_transform.anchorMax = new Vector2(1, 1);
-
-
-
+        item.show();
+        
         Debug.Log(item);
     }
 }
