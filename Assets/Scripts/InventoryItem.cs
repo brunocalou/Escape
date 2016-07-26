@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InventoryItem : MonoBehaviour, UnityEngine.EventSystems.IPointerClickHandler
+public class InventoryItem : ItemBase, UnityEngine.EventSystems.IPointerClickHandler
 {
 
     Inventory inventory;
@@ -15,16 +15,6 @@ public class InventoryItem : MonoBehaviour, UnityEngine.EventSystems.IPointerCli
 	void Update () {
 	
 	}
-
-    public void show()
-    {
-        this.gameObject.SetActive(true);
-    }
-
-    public void hide()
-    {
-        this.gameObject.SetActive(false);
-    }
 
     public void OnPointerClick(UnityEngine.EventSystems.PointerEventData eventData)
     {

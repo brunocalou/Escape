@@ -5,6 +5,7 @@ public class Inventory : MonoBehaviour {
     ArrayList items;
     const int MAX_NUMBER_OF_ITEMS = 5;
     public GameObject select;
+    InventoryItem selectedItem;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,14 @@ public class Inventory : MonoBehaviour {
         rect_transform.pivot = new Vector2(pivot.x, 1 - items.IndexOf(item) / (float)(MAX_NUMBER_OF_ITEMS - 1));
     }
 
+    void organizeItems()
+    {
+        foreach (InventoryItem item in items)
+        {
+            adjustItemPivot(item);
+        }
+    }
+
     public void handleSelect(InventoryItem item)
     {
         if (select.GetComponent<RectTransform>().pivot == item.GetComponent<RectTransform>().pivot && select.activeSelf)
@@ -38,15 +47,22 @@ public class Inventory : MonoBehaviour {
         }
     }
 
+    public bool isSelected(InventoryItem item)
+    {
+        return item == selectedItem;
+    }
+
     public void selectItem(InventoryItem item)
     {
         select.SetActive(true);
         select.GetComponent<RectTransform>().pivot = item.GetComponent<RectTransform>().pivot;
+        selectedItem = item;
     }
 
     public void deselectItem()
     {
         select.SetActive(false);
+        selectedItem = null;
     }
 
     public void addItem(InventoryItem item)
@@ -59,5 +75,16 @@ public class Inventory : MonoBehaviour {
         item.show();
         
         Debug.Log(item);
+    }
+
+    public void removeItem(InventoryItem item)
+    {
+        item.hide();
+        if (isSelected(item))
+        {
+            deselectItem();
+        }
+        items.Remove(item);
+        organizeItems();
     }
 }

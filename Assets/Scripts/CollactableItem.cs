@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CollactableItem : MonoBehaviour {
+public class CollactableItem : ItemBase {
 
     Inventory inventory;
     public InventoryItem inventory_item; //2D image associated with the item
@@ -10,18 +10,6 @@ public class CollactableItem : MonoBehaviour {
 	void Start () {
         inventory = GameObject.FindWithTag("Inventory").GetComponent<Inventory>();
 	}
-
-    public void show()
-    {
-        this.gameObject.GetComponent<Renderer>().enabled = true;
-        this.gameObject.GetComponent<BoxCollider>().enabled = true;
-    }
-
-    public void hide()
-    {
-        this.gameObject.GetComponent<Renderer>().enabled = false;
-        this.gameObject.GetComponent<BoxCollider>().enabled = false;
-    }
 
     // Update is called once per frame
     void Update()
