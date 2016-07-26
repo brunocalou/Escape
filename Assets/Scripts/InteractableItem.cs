@@ -12,7 +12,10 @@ public class InteractableItem : ItemBase
 	// Use this for initialization
 	void Start () {
         inventory = GameObject.FindWithTag("Inventory").GetComponent<Inventory>();
-        item_to_be_collacted.hide();
+        if (item_to_be_collacted != null)
+        {
+            item_to_be_collacted.hide();
+        }
     }
 	
 	// Update is called once per frame

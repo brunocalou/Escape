@@ -21,6 +21,11 @@ public class CollactableItem : ItemBase {
         }
     }
 
+    void OnMouseDownFromClickEventScript()
+    {
+        Debug.Log("OnMouseDownFromClickEventScript");
+    }
+
     void OnMouseDown()
     {
         Debug.Log("MOUSE DOWN");
