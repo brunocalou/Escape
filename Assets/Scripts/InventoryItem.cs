@@ -3,7 +3,6 @@ using System.Collections;
 
 public class InventoryItem : ItemBase, UnityEngine.EventSystems.IPointerClickHandler
 {
-
     Inventory inventory;
     // Use this for initialization
     void Start () {
