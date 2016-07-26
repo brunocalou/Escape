@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class BackButton : ItemBase {
 
@@ -7,8 +6,6 @@ public class BackButton : ItemBase {
 
 	// Use this for initialization
 	void Start () {
-        this.hide();
-        zoomed_items = GameObject.FindObjectsOfType<ZoomedItem>();
 	}
 	
 	// Update is called once per frame
@@ -18,6 +15,8 @@ public class BackButton : ItemBase {
 
     public void hideZoomedItems()
     {
+        zoomed_items = GameObject.FindObjectsOfType<ZoomedItem>();
+
         //Hides back button and the zoomed items
         foreach (ZoomedItem item in zoomed_items)
         {

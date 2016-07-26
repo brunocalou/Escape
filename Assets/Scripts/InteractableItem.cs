@@ -14,7 +14,7 @@ public class InteractableItem : ItemBase
         inventory = GameObject.FindWithTag("Inventory").GetComponent<Inventory>();
         if (item_to_be_collacted != null)
         {
-            item_to_be_collacted.hide();
+            item_to_be_collacted.transform.position = new Vector3(999, 999, 999);
         }
     }
 	
@@ -33,8 +33,8 @@ public class InteractableItem : ItemBase
             Debug.Log("Item is selected");
             if (item_to_be_collacted != null)
             {
-                item_to_be_collacted.show();
                 item_to_be_collacted.transform.position = this.transform.position;
+                item_to_be_collacted.show();
 
                 if(remove_inventory_item_after_interaction)
                 {
