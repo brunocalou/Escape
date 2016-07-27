@@ -10,20 +10,15 @@ public class InteractableItem : ItemBase
 
     Inventory inventory;
 	// Use this for initialization
-	void Start () {
+	public void Start () {
         inventory = GameObject.FindWithTag("Inventory").GetComponent<Inventory>();
         if (item_to_be_collacted != null)
         {
             item_to_be_collacted.transform.position = new Vector3(999, 999, 999);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
-    void OnMouseDown()
+    public void OnMouseDown()
     {
         Debug.Log("Clicked on an interactable item");
         if (inventory.isSelected(inventory_item_to_interact_with))
