@@ -14,12 +14,21 @@ public class ClickEvent : MonoBehaviour {
         // Code for OnMouseDown in the iPhone. Unquote to test.
         RaycastHit hit = new RaycastHit();
         for (int i = 0; i < Input.touchCount; ++i)
-            if (Input.GetTouch(i).phase.Equals(TouchPhase.Began))
+            if (Input.GetTouch(i).phase.Equals(TouchPhase.Ended) || Input.GetTouch(i).phase.Equals(TouchPhase.Began))
             {
                 // Construct a ray from the current touch coordinates
                 Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
                 if (Physics.Raycast(ray, out hit))
-                    hit.transform.gameObject.SendMessage("OnMouseDown");
+                {
+                    if (Input.GetTouch(i).phase.Equals(TouchPhase.Ended))
+                    {
+                        hit.transform.gameObject.SendMessage("OnMouseUp");
+                    } else if (Input.GetTouch(i).phase.Equals(TouchPhase.Began))
+                    {
+                        hit.transform.gameObject.SendMessage("OnMouseDown");
+                    }
+                }
+                    
             }
     }
 }

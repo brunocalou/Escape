@@ -41,7 +41,7 @@ public class StartGame : ItemBase {
         }
     }
 
-    void OnMouseDown()
+    void OnMouseUp()
     {
         startGame();
         this.hide();

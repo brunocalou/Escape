@@ -15,11 +15,13 @@ public class Wire : InteractableItem {
         game = GameObject.FindObjectOfType<EndGame>();
 	}
 
-    new void OnMouseDown()
+    new void OnMouseUp()
     {
-        base.OnMouseDown();
-        Debug.Log("Wire on mouse down");
-        game.OnWireCut(this);
+        base.OnMouseUp();
+        if (mouse_was_down)
+        {
+            Debug.Log("Wire on mouse down");
+            game.OnWireCut(this);
+        }
     }
-	
 }

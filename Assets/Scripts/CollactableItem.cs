@@ -5,6 +5,7 @@ public class CollactableItem : ItemBase {
 
     Inventory inventory;
     public InventoryItem inventory_item; //2D image associated with the item
+    bool mouse_was_down = false;
 
 	// Use this for initialization
 	void Start () {
@@ -21,19 +22,23 @@ public class CollactableItem : ItemBase {
         }
     }
 
-    void OnMouseDownFromClickEventScript()
-    {
-        Debug.Log("OnMouseDownFromClickEventScript");
-    }
-
     void OnMouseDown()
     {
-        Debug.Log("MOUSE DOWN");
-        if (inventory != null)
+        mouse_was_down = true;
+    }
+
+    void OnMouseUp()
+    {
+        if (mouse_was_down)
         {
-            Debug.Log("Item will be added");
-            inventory.addItem(this.inventory_item);
+            Debug.Log("MOUSE DOWN");
+            if (inventory != null)
+            {
+                Debug.Log("Item will be added");
+                inventory.addItem(this.inventory_item);
+            }
+            hide();
         }
-        hide();
+        
     }
 }

@@ -27,7 +27,7 @@ public class ZoomItem : MonoBehaviour, UnityEngine.EventSystems.IPointerClickHan
 	
 	}
 
-    void OnMouseDown()
+    void OnMouseUp()
     {
         showZoomedItemAndBackButton();
     }
