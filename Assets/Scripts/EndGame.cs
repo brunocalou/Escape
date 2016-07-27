@@ -7,12 +7,11 @@ public class EndGame : MonoBehaviour
     Wire.Color[] color_order = { Wire.Color.RED, Wire.Color.BLUE, Wire.Color.YELLOW };
     int current_color_idx = 0;
     public GameObject game_win;
-    Timer timer;
+    public Timer timer;
 
     void Start()
     {
         game_win.SetActive(false);
-        timer = GameObject.FindObjectOfType<Timer>();
     }
 
     public void OnWireCut(Wire wire)
@@ -38,17 +37,19 @@ public class EndGame : MonoBehaviour
     public void runGameOver()
     {
         Debug.Log("GAME OVER");
+        timer.stopTimer();
         Handheld.PlayFullScreenMovie("GameOver.mp4", Color.black, FullScreenMovieControlMode.Hidden);
     }
 
     void runGameWin()
     {
         Debug.Log("GAME WIN");
+        timer.stopTimer();
         foreach (ZoomItem item in GameObject.FindObjectsOfType<ZoomItem>())
         {
             item.hideZoomedItemAndBackButton();
         }
         game_win.SetActive(true);
-        timer.stopTimer();
+        
     }
 }
