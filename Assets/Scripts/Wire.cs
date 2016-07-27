@@ -9,6 +9,8 @@ public class Wire : InteractableItem {
 
     EndGame game;
 
+    public Inventory inventory;
+
     // Use this for initialization
     new void Start () {
         base.Start();
@@ -20,8 +22,11 @@ public class Wire : InteractableItem {
         base.OnMouseUp();
         if (mouse_was_down)
         {
+            if (inventory.isSelected(this.inventory_item_to_interact_with))
+            {
+                game.OnWireCut(this);
+            }
             Debug.Log("Wire on mouse down");
-            game.OnWireCut(this);
         }
     }
 }

@@ -45,11 +45,15 @@ public class EndGame : MonoBehaviour
     {
         Debug.Log("GAME WIN");
         timer.stopTimer();
-        foreach (ZoomItem item in GameObject.FindObjectsOfType<ZoomItem>())
+        foreach (ZoomedItem item in GameObject.FindObjectsOfType<ZoomedItem>())
         {
-            item.hideZoomedItemAndBackButton();
+            item.hide();
+        }
+        BackButton back = GameObject.FindObjectOfType<BackButton>();
+        if (back != null)
+        {
+            back.hide();
         }
         game_win.SetActive(true);
-        
     }
 }
