@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Timer : MonoBehaviour {
 
-    float max_time = 5 + 0 * 60;//3 minutes
+    float max_time = 1 + 3 * 60;//3 minutes
     float time_left;
     bool has_started = false;
     UnityEngine.UI.Text timer_text;

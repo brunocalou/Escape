@@ -38,6 +38,7 @@ public class EndGame : MonoBehaviour
     public void runGameOver()
     {
         Debug.Log("GAME OVER");
+        Handheld.PlayFullScreenMovie("GameOver.mp4", Color.black, FullScreenMovieControlMode.Hidden);
     }
 
     void runGameWin()
