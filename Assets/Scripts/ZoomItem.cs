@@ -6,10 +6,21 @@ public class ZoomItem : MonoBehaviour, UnityEngine.EventSystems.IPointerClickHan
     public ZoomedItem zoomed_item;
     public BackButton back_button;
 
-	// Use this for initialization
-	void Start () {
+    public void hideZoomedItemAndBackButton()
+    {
         zoomed_item.hide();
         back_button.hide();
+    }
+
+    public void showZoomedItemAndBackButton()
+    {
+        zoomed_item.show();
+        back_button.show();
+    }
+
+    // Use this for initialization
+    void Start () {
+        hideZoomedItemAndBackButton();
     }
 	// Update is called once per frame
 	void Update () {
@@ -18,13 +29,11 @@ public class ZoomItem : MonoBehaviour, UnityEngine.EventSystems.IPointerClickHan
 
     void OnMouseDown()
     {
-        zoomed_item.show();
-        back_button.show();
+        showZoomedItemAndBackButton();
     }
 
     public void OnPointerClick(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        zoomed_item.show();
-        back_button.show();
+        showZoomedItemAndBackButton();
     }
 }

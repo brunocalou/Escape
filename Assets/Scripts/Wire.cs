@@ -7,12 +7,12 @@ public class Wire : InteractableItem {
 
     public Color color;
 
-    Game game;
+    EndGame game;
 
     // Use this for initialization
     new void Start () {
         base.Start();
-        game = GameObject.FindObjectOfType<Game>();
+        game = GameObject.FindObjectOfType<EndGame>();
 	}
 
     new void OnMouseDown()

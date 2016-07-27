@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Timer : MonoBehaviour {
 
-    float max_time = 1 + 3 * 60;//3 minutes
+    float max_time = 5 + 0 * 60;//3 minutes
     float time_left;
     bool has_started = false;
     UnityEngine.UI.Text timer_text;
@@ -27,6 +27,11 @@ public class Timer : MonoBehaviour {
         has_started = true;
     }
 
+    public void stopTimer()
+    {
+        has_started = false;
+    }
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -41,6 +46,8 @@ public class Timer : MonoBehaviour {
             if (time_left <= 0)
             {
                 Debug.Log("Game Over");
+                GameObject.FindObjectOfType<EndGame>().runGameOver();
+                stopTimer();
             }
             else
             {
