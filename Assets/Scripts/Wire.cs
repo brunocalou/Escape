@@ -9,8 +9,6 @@ public class Wire : InteractableItem {
 
     EndGame game;
 
-    public Inventory inventory;
-
     // Use this for initialization
     new void Start () {
         base.Start();

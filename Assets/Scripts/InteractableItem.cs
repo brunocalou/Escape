@@ -9,7 +9,7 @@ public class InteractableItem : ItemBase
     public bool remove_inventory_item_after_interaction = true;
     protected bool mouse_was_down = false;
 
-    Inventory inventory;
+    protected Inventory inventory;
 	// Use this for initialization
 	public void Start () {
         inventory = GameObject.FindWithTag("Inventory").GetComponent<Inventory>();
