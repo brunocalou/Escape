@@ -19,7 +19,7 @@ public class StartGame : ItemBase {
         timer = GameObject.FindObjectOfType<Timer>();
         timer.gameObject.SetActive(false);
 
-        bomb = GameObject.Find("Bomb");
+        bomb = transform.parent.Find("Bomb").gameObject;
         bomb.SetActive(false);
         
         this.show();
